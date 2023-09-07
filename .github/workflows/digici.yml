@@ -15,17 +15,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Build Client
-        run: |
-            ls -ltr
-            cd client
-            npm i
-            npm run build
       - name: Build Server
         run: |
             ls -ltr
             cd server
-            npm i
+            npm ci
+      - name: Build Client
+        run: |
+            ls -ltr
+            cd client
+            npm ci
+            npm run build
       - name: Restart Services
         run: |
             pm2 stop 0
