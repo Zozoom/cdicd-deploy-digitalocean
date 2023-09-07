@@ -15,21 +15,22 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Setup Server
-        run: |
-            ls -ltr
-            cd server
-            npm ci
-            pm2 stop 0
-            pm2 start 0
-            pm2 save
-      - name: Setup Client
+      - name: Build Client
         run: |
             ls -ltr
             cd client
-            npm ci
+            npm i
             npm run build
+      - name: Build Server
+        run: |
+            ls -ltr
+            cd server
+            npm i
+      - name: Restart Services
+        run: |
+            pm2 stop 0
             pm2 stop 1
+            pm2 start 0
             pm2 start 1
             pm2 save
             sudo service nginx restart
