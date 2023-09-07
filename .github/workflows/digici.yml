@@ -1,0 +1,24 @@
+name: Digital Ocean CI/CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: |
+            cd server
+            npm i
+            npm run dev
+            cd client
+            npm i
+            npm run build
