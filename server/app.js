@@ -6,7 +6,7 @@ const port = 5000;
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.get('/name', (req, res) => {
-  res.send('Hello World!');
+  res.send('Hello World! - Changed');
 });
 
 app.listen(port, () => {
