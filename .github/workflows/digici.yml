@@ -16,8 +16,9 @@ jobs:
         with:
           node-version: 16
       - run: |
+            ls -ltr
             cd server
-            npm i
-            cd client
-            npm i
+            npm ci
+            cd ../client
+            npm ci
             npm run build
