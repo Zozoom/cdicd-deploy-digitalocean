@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+    name: Build Client and Server
     runs-on: self-hosted
 
     steps:
